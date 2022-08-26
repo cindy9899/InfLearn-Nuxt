@@ -10,6 +10,9 @@
         <span>{{product.price}}</span>
       </li>
     </ul>
+    <div class="cart-wrapper">
+      <button class="btn" @click="moveToCartPage">장바구니 바로가기</button>
+    </div>
     </main>
   </div>
 </template>
@@ -49,6 +52,9 @@ import {fetchProductsByKeyword} from '@/api'
         ...item,
         imageUrl: `${item.imageUrl}?random=${Math.random()}` // 사진 랜덤 출력
       }))
+      },
+      moveToCartPage(){
+        this.$router.push('/cart');
       }
 
     }
