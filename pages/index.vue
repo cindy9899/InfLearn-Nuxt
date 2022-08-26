@@ -1,7 +1,8 @@
 <template>
   <div class="app">
     <main>
-    <SearchInput></SearchInput>
+    <!-- <SearchInput :search-keyword="searchKeyword" @input="updateSearchKeyword"></SearchInput> -->
+    <SearchInput v-model="searchKeyword" @search="searchProducts"></SearchInput>
     <ul>
       <li v-for="product in products" :key="product.id" class="item flex" @click="moveToDetailPage(product.id)">
         <img class="product-image" :src="product.imageUrl" :alt="product.name" />
@@ -16,6 +17,7 @@
 <script>
 import axios from 'axios'
 import SearchInput from '@/components/SearchInput.vue'
+import {fetchProductsByKeyword} from '@/api'
 
   export default {
     components: {SearchInput},
@@ -29,12 +31,22 @@ import SearchInput from '@/components/SearchInput.vue'
 
       return {products}
     },
+    data() {
+      return {
+        searchKeyword: '',
+      }
+    },
 
     methods : {
       moveToDetailPage(id) {
         console.log(id)
         this.$router.push(`detail/${id}`);
+      },
+      async searchProducts() {
+        const response = await fetchProductsByKeyword(this.searchKeyword);
+        console.log(response)
       }
+
     }
   }
 </script>
