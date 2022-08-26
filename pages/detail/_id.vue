@@ -24,18 +24,20 @@ import {fetchProductById, createCartItem} from '@/api/index'
       const product = response.data
       return {product}
     },
-    head: {
-    title: 'Shopping Item Detail',
-    htmlAttrs: {
-      lang: 'en',
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '이 상품은 ~~입니다.' },
-      { name: 'format-detection', content: 'telephone=no' },
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    head() {
+      return {
+        title: `Shopping Item Detail - ${this.product.name}`,
+        htmlAttrs: {
+          lang: 'en',
+        },
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          { hid: 'description', name: 'description', content: `이 상품은 ${this.product.name}입니다.` },
+          { name: 'format-detection', content: 'telephone=no' },
+        ],
+
+      }
   },
     methods: {
       async addToCart(){
