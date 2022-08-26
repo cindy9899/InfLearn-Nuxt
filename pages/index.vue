@@ -41,12 +41,10 @@ import {fetchProductsByKeyword, fetchProducts} from '@/api'
 
     methods : {
       moveToDetailPage(id) {
-        console.log(id)
         this.$router.push(`detail/${id}`);
       },
       async searchProducts() {
         const response = await fetchProductsByKeyword(this.searchKeyword);
-        console.log(response.data)
         this.products = response.data.map(item=>({
         ...item,
         imageUrl: `${item.imageUrl}?random=${Math.random()}` // 사진 랜덤 출력
