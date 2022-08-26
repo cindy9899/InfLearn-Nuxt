@@ -44,7 +44,11 @@ import {fetchProductsByKeyword} from '@/api'
       },
       async searchProducts() {
         const response = await fetchProductsByKeyword(this.searchKeyword);
-        console.log(response)
+        console.log(response.data)
+        this.products = response.data.map(item=>({
+        ...item,
+        imageUrl: `${item.imageUrl}?random=${Math.random()}` // 사진 랜덤 출력
+      }))
       }
 
     }
