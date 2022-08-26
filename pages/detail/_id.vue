@@ -26,6 +26,7 @@ import {fetchProductById} from '@/api/index'
     },
     methods: {
       addToCart(){
+        this.$store.commit('addCartItem', this.product);
         this.$router.push('/cart');
       }
     }
