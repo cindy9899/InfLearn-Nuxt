@@ -35,6 +35,8 @@ import {fetchProductById, createCartItem} from '@/api/index'
           { name: 'viewport', content: 'width=device-width, initial-scale=1' },
           { hid: 'description', name: 'description', content: `이 상품은 ${this.product.name}입니다.` },
           { name: 'format-detection', content: 'telephone=no' },
+          { hid: 'og:title', property: 'og:title', content: '상품 상세 페이지'},
+          { hid: 'og:description', property: 'og:description', content: '상품 상세 정보를 확인하세요.'},
         ],
 
       }
