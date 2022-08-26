@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { fetchProducts } from '~/api'
   export default {
     async asyncData() {
-       const response = await axios.get('http://localhost:3000/products')
+       const response = await fetchProducts();
       // console.log(response);
       const products = response.data
 
