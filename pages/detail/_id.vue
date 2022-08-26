@@ -7,7 +7,7 @@
       <div class="side-panel">
         <p class="name">{{product.name}}</p>
         <p class="price">{{product.price}}</p>
-        <!-- <button type="button" @click="addToCart">Add to Cart</button> -->
+        <button type="button" @click="addToCart">Add to Cart</button>
       </div>
     </div>
   </div>
@@ -24,11 +24,11 @@ import {fetchProductById} from '@/api/index'
       const product = response.data
       return {product}
     },
-    // created() {
-    //   console.log(this.$route);
-    //   const id = this.$route.params.id
-    //   fetchProductById(id)
-    // }
+    methods: {
+      addToCart(){
+        this.$router.push('/cart');
+      }
+    }
     
   }
 </script>
