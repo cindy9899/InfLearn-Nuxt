@@ -1,9 +1,7 @@
 <template>
   <div class="app">
     <main>
-    <div>
-      <input type="text" />
-    </div>
+    <SearchInput></SearchInput>
     <ul>
       <li v-for="product in products" :key="product.id" class="item flex" @click="moveToDetailPage(product.id)">
         <img class="product-image" :src="product.imageUrl" :alt="product.name" />
@@ -17,8 +15,10 @@
 
 <script>
 import axios from 'axios'
+import SearchInput from '@/components/SearchInput.vue'
 
   export default {
+    components: {SearchInput},
     async asyncData() {
        const response = await axios.get('http://localhost:3000/products')
       // console.log(response);
