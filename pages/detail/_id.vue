@@ -7,7 +7,7 @@
       <div class="side-panel">
         <p class="name">{{product.name}}</p>
         <p class="price">{{product.price}}</p>
-        <button type="button" @click="addToCart">Add to Cart</button>
+        <button type="button" @click="addToCart">카트에 담기</button>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script>
 // import axios from 'axios'
-import {fetchProductById} from '@/api/index'
+import {fetchProductById, createCartItem} from '@/api/index'
 
 
   export default {
@@ -25,7 +25,9 @@ import {fetchProductById} from '@/api/index'
       return {product}
     },
     methods: {
-      addToCart(){
+      async addToCart(){
+        const response = await createCartItem(this.product);
+        console.log("detail response: ",response)
         this.$store.commit('addCartItem', this.product);
         this.$router.push('/cart');
       }
