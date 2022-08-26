@@ -1,11 +1,9 @@
 <template>
   <div>
-    <header>
-    <h1>
-      <NuxtLink to="/">
+    <header class="title">
+      <NuxtLink class="logo" to="/">
         Nuxt Shopping
       </NuxtLink>
-    </h1>
     </header>
     <Nuxt />
   </div>
@@ -16,4 +14,19 @@ export default {
   //   console.log(this.$route)
   // },
 }
-</script>ㅁ
+</script>
+
+<style scoped>
+header{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+.logo{
+  font-weight: 900;
+}
+.logo:visited{
+  color: inherit;
+}
+</style>
